@@ -1,15 +1,19 @@
 "use strict";
 
-let Math_random_mock = null;
-const Math_random = Math.random.bind(Math);
-Math.random = () => {
-  return (Math_random_mock || Math_random)();
-}
+window.Math_random_mock = null;
+window.crypto_getRandomValues_mock = null;
 
-let crypto_getRandomValues_mock = null;
-if (crypto && crypto.getRandomValues) {
-  const crypto_getRandomValues = crypto.getRandomValues.bind(crypto);
-  crypto.getRandomValues = (arr) => {
-    (crypto_getRandomValues_mock || crypto_getRandomValues)(arr);
+(function () {
+  var Math_random = Math.random.bind(Math);
+  Math.random = function () {
+    return (Math_random_mock || Math_random)();
+  };
+
+  var crypto = window.crypto || window.msCrypto;
+  if (crypto && crypto.getRandomValues) {
+    var crypto_getRandomValues = crypto.getRandomValues.bind(crypto);
+    crypto.getRandomValues = function (arr) {
+      (crypto_getRandomValues_mock || crypto_getRandomValues)(arr);
+    };
   }
-}
+}());
