@@ -37,6 +37,8 @@ Tests are known to pass on the following browsers:
 
 - Chrome
 - Edge
+- Firefox
 - Internet Explorer 11
+- Safari
 
-They may pass on other browsers as well - [run the `math-random-polyfill.js` test suite](http://DavidAnson.github.io/math-random-polyfill) to check.
+They may pass on other browsers as well; [run the `math-random-polyfill.js` test suite](https://davidanson.github.io/math-random-polyfill/) to check.
